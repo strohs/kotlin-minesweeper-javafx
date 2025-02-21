@@ -11,18 +11,18 @@ import javafx.scene.input.MouseEvent
  * Date: 6/21/2017
  * Time: 2:08 PM
  */
-class OptionsMenuCtrl( val kSweeper: KSweeper ) {
+class OptionsMenuCtrl(private val kSweeper: KSweeper ) {
 
     companion object Constants {
         //these are the defaults beings used for the row/column sliders on the options menu
-        val MAJOR_TICK_UNITS    = 5.0
-        val MINOR_TICK_COUNT    = 1
-        val BLOCK_INCREMENT     = 1.0
+        const val MAJOR_TICK_UNITS    = 5.0
+        const val MINOR_TICK_COUNT    = 1
+        const val BLOCK_INCREMENT     = 1.0
     }
 
     val optionMenu: Menu = build()
 
-    fun build() : Menu {
+    private fun build() : Menu {
         //build the new game menu item
         val newGameMenu = buildNewGameMenuItem()
 

@@ -8,13 +8,13 @@ package org.cliff.kotsweeper
  */
 object Boards {
 
-    val mine : Square = Square(SquareType.MINE)
+    private val mine : Square = Square(SquareType.MINE)
 
     //generate an empty and unknown Square Type with the specified adjacency count
-    fun eadj( n:Int ) = Square(SquareType.EMPTY, SquareStatus.UNKNOWN, n)
+    private fun eadj( n:Int ) = Square(SquareType.EMPTY, SquareStatus.UNKNOWN, n)
 
     //unknown square types with adjacency counts from 1 to 8
-    val uadj1 : Square = Square(SquareType.EMPTY, SquareStatus.UNKNOWN, 1)
+    private val uadj1 : Square = Square(SquareType.EMPTY, SquareStatus.UNKNOWN, 1)
     val uadj2 : Square = Square(SquareType.EMPTY, SquareStatus.UNKNOWN, 2)
     val uadj3 : Square = Square(SquareType.EMPTY, SquareStatus.UNKNOWN, 3)
     val uadj4 : Square = Square(SquareType.EMPTY, SquareStatus.UNKNOWN, 4)

@@ -52,9 +52,9 @@ internal class BoardModelTest {
     }
 
     @Test
-    fun bNoNeigboringMines() {
-        assertTrue(BoardModel.bNoNeigboringMines(1, 0, Boards.mined_1_2_3x3))
-        assertFalse(BoardModel.bNoNeigboringMines(1, 1, Boards.mined_1_2_3x3))
+    fun bNoNeighboringMines() {
+        assertTrue(BoardModel.bNoNeighboringMines(1, 0, Boards.mined_1_2_3x3))
+        assertFalse(BoardModel.bNoNeighboringMines(1, 1, Boards.mined_1_2_3x3))
     }
 
     @Test

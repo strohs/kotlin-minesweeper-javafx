@@ -21,34 +21,32 @@ class KSweeper : Application() {
 
     companion object {
 
-        val BORDER_ID           = "borderPane"
-        val MAIN_GRID_ID        = "main-grid"
-        val SMILEY_BUTTON_ID    = "smiley-button"
-        val MENU_BAR_ID         = "mainMenuBar"
-        val VBOX_ID             = "centerVBox"
-        val ROW_SLIDER_ID       = "rowSlider"
-        val COL_SLIDER_ID       = "colSlider"
-        val REMAINING_MINES_ID  = "remainingMines"
-        val TIMER_ID            = "timer"
-        val IMAGES_PATH         = "graphics"
-        val STYLESHEET_PATH     = "stylesheets/kotsweeper.css"
+        const val BORDER_ID           = "borderPane"
+        const val MAIN_GRID_ID        = "main-grid"
+        const val SMILEY_BUTTON_ID    = "smiley-button"
+        const val MENU_BAR_ID         = "mainMenuBar"
+        const val VBOX_ID             = "centerVBox"
+        const val ROW_SLIDER_ID       = "rowSlider"
+        const val COL_SLIDER_ID       = "colSlider"
+        const val REMAINING_MINES_ID  = "remainingMines"
+        const val TIMER_ID            = "timer"
+        const val IMAGES_PATH         = "graphics"
+        const val STYLESHEET_PATH     = "stylesheets/kotsweeper.css"
 
-        val SMILEY_TT_TEXT      = "Click to start a new game"
-        val REMAINING_TT_TEXT   = "Number of mines remaining"
+        const val SMILEY_TT_TEXT      = "Click to start a new game"
+        const val REMAINING_TT_TEXT   = "Number of mines remaining"
 
-        val BLACK_FLAG = "\u2691"
-        val BOMB = "\u2299"
-        val QUESTION_MARK = "?"
+        const val BLACK_FLAG = "\u2691"
+        const val BOMB = "\u2299"
+        const val QUESTION_MARK = "?"
         //val SMILEY_FACE = "\u263A"
-        val MISMARKED = "X"
+        const val MISMARKED = "X"
 
         /**
          * javafx launching point
          */
         @JvmStatic fun main(args: Array<String>) {
-
             launch( KSweeper::class.java, *args )
-
         }
     }
 
@@ -56,13 +54,13 @@ class KSweeper : Application() {
     val model = Model( 8,8, BoardModel.newBoard( 8,8 ) )
 
     //references to all controllers used in the game
-    lateinit var timerCtrl: TimerCtrl
-    lateinit var smileyBtnCtrl: SmileyBtnCtrl
-    lateinit var remainingMinesCtrl: RemainingMinesCtrl
-    lateinit var optionsMenuCtrl: OptionsMenuCtrl
-    lateinit var gridCtrl: GridCtrl
+    private lateinit var timerCtrl: TimerCtrl
+    private lateinit var smileyBtnCtrl: SmileyBtnCtrl
+    private lateinit var remainingMinesCtrl: RemainingMinesCtrl
+    private lateinit var optionsMenuCtrl: OptionsMenuCtrl
+    private lateinit var gridCtrl: GridCtrl
     //holds a reference to our javafx Scene
-    lateinit var scene:Scene
+    private lateinit var scene:Scene
 
 
     override fun start( stage: Stage ) {
@@ -91,8 +89,6 @@ class KSweeper : Application() {
 
         stage.show()
     }
-
-
 
 
     private fun buildVbox() : VBox {

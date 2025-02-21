@@ -17,21 +17,22 @@ class BoardPrinter {
         private fun Int.format(digits: Int) = java.lang.String.format("%${digits}d", this)
 
         private fun debugSquare( square:Square ) : String {
-            when ( square.type ) {
-                SquareType.MINE -> return "*"
-                else            -> return square.adjCount.toString()
+            return when ( square.type ) {
+                SquareType.MINE -> "*"
+                else            -> square.adjCount.toString()
             }
         }
 
         private fun printSquare( square:Square ) : String {
-            when (square.status) {
-                SquareStatus.UNKNOWN    -> return "."
+            return when (square.status) {
+                SquareStatus.UNKNOWN    -> "."
                 SquareStatus.REVEALED   -> if (square.type == SquareType.MINE)
-                                            return "*"
-                                            else return square.adjCount.toString()
-                SquareStatus.MARKED     -> return "!"
-                SquareStatus.QUESTION   -> return "?"
-                SquareStatus.MISMARKED  -> return "X"
+                    "*"
+                else square.adjCount.toString()
+
+                SquareStatus.MARKED     -> "!"
+                SquareStatus.QUESTION   -> "?"
+                SquareStatus.MISMARKED  -> "X"
             }
         }
 

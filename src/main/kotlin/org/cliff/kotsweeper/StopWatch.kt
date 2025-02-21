@@ -9,8 +9,8 @@ import javafx.util.Duration
 import java.time.Instant
 
 /**
- * performs some ActionEvent, at the specified updateInterval. Uses a JavaFX Timeline object to handle the event
- * on a separate javafx UI thread
+ * performs some ActionEvent, at the specified updateInterval.
+ * Uses a JavaFX Timeline object to handle the event on a separate javafx UI thread
  * User: Cliff
  * Date: 6/19/2017
  * Time: 2:21 PM
@@ -18,9 +18,9 @@ import java.time.Instant
 class StopWatch( updateInterval:Double, handler:EventHandler<ActionEvent> ) {
 
     //holds the instant this StopWatch was instantiated
-    val startTime = Instant.now()
+    val startTime: Instant = Instant.now()
 
-    val stopwatch:Timeline = Timeline (
+    private val stopwatch:Timeline = Timeline (
             KeyFrame( Duration.seconds( updateInterval ), handler ))
     init {
         stopwatch.cycleCount = Timeline.INDEFINITE

@@ -10,15 +10,15 @@ import javafx.scene.paint.Color
  * Date: 6/21/2017
  * Time: 2:33 PM
  */
-class GridCtrl( val kSweeper: KSweeper, var rows:Int, var cols:Int ) {
+class GridCtrl(private val kSweeper: KSweeper, var rows:Int, var cols:Int ) {
 
     // holds the 2d list of SquareControllers that make up the game's mines grid
     private lateinit var squareControllers:MutableList<MutableList<SquareCtrl>>
 
     val grid: GridPane = build( rows,cols )
 
-    fun build( rows:Int, cols:Int ): GridPane {
-        val grid: GridPane = GridPane()
+    private fun build(rows:Int, cols:Int ): GridPane {
+        val grid = GridPane()
         grid.id = KSweeper.MAIN_GRID_ID
         squareControllers = emptyList( kSweeper, rows, cols )
 

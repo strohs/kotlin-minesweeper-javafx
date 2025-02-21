@@ -16,11 +16,11 @@ import java.time.Instant
 class TimerCtrl( val kSweeper: KSweeper ) {
 
     //how often the text field will update itself with the new elapsed time
-    val UPDATE_INTERVAL_SECONDS = 1.0
+    private val updateIntervalSecs = 1.0
     
     val timer: TextField = build()
 
-    lateinit private var stopwatch: StopWatch
+    private lateinit var stopwatch: StopWatch
 
     /**
      * builds the Timer TextField
@@ -38,7 +38,7 @@ class TimerCtrl( val kSweeper: KSweeper ) {
     }
 
     private fun buildStopWatch() : StopWatch {
-        return StopWatch(UPDATE_INTERVAL_SECONDS, EventHandler { event: ActionEvent ->
+        return StopWatch(updateIntervalSecs, EventHandler { event: ActionEvent ->
             val elapsed = Duration.between( stopwatch.startTime, Instant.now() ).seconds
             timer.text = elapsed.toString()
         })

@@ -38,7 +38,7 @@ object BoardModel {
     }
 
     /**
-     * returns a brand new board with the specified dimensions
+     * returns a new board with the specified dimensions
      */
     fun newBoard(rows: Int, cols: Int): List<List<Square>> {
         val board = emptyBoard(rows, cols)
@@ -62,7 +62,7 @@ object BoardModel {
      * Check if a square has no neighboring mines
      * returns true if a square is empty AND its adjacent mine counter is zero
      */
-    fun bNoNeigboringMines(row: Int, col: Int, board: List<List<Square>>): Boolean =
+    fun bNoNeighboringMines(row: Int, col: Int, board: List<List<Square>>): Boolean =
             board[row][col].type == SquareType.EMPTY && board[row][col].adjCount == 0
 
     /**
@@ -72,10 +72,10 @@ object BoardModel {
         //contains all empty squares connected to our starting square
         val visited: MutableList<Pair<Int, Int>> = mutableListOf()
 
-        if (bNoNeigboringMines(row, col, board)) {
+        if (bNoNeighboringMines(row, col, board)) {
             visited.add(Pair(row, col))
             //get adjacent empty squares
-            val adjacents = adjIndices(row, col, board).filter { (ri, ci) -> bNoNeigboringMines(ri, ci, board) }.toMutableList()
+            val adjacents = adjIndices(row, col, board).filter { (ri, ci) -> bNoNeighboringMines(ri, ci, board) }.toMutableList()
 
             while (adjacents.isNotEmpty()) {
                 //add all adjacent empty cells to the visited list that have not already been visited
@@ -84,7 +84,7 @@ object BoardModel {
                 val (frIdx, fcIdx) = adjacents.removeAt(0)
                 //use this pair to get a list of its adjacent,empty squares
                 val nextAdjacents = adjIndices(frIdx, fcIdx, board)
-                        .filter { (ri, ci) -> bNoNeigboringMines(ri, ci, board) }
+                        .filter { (ri, ci) -> bNoNeighboringMines(ri, ci, board) }
                 //append the new adjacent squares to our adjacent list, but only if they haven't already been visited
                 adjacents.addAll(nextAdjacents.filterNot { visited.contains(it) })
             }
@@ -255,9 +255,7 @@ object BoardModel {
      */
     private fun adjMineCount(row: Int, col: Int, board: List<List<Square>>): Int {
         //filter and return the count of mine squares that are adjacent to our target index (idx)
-        return adjIndices(row, col, board)
-                .filter { (ridx, cidx) -> board[ridx][cidx].type == SquareType.MINE }
-                .count()
+        return adjIndices(row, col, board).count { (ridx, cidx) -> board[ridx][cidx].type == SquareType.MINE }
     }
     
     /**

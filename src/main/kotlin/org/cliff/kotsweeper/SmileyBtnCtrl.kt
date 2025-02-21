@@ -13,14 +13,14 @@ import javafx.scene.image.ImageView
  * Date: 6/20/2017
  * Time: 10:38 AM
  */
-class SmileyBtnCtrl(val ksweeper:KSweeper ) {
+class SmileyBtnCtrl(private val ksweeper:KSweeper ) {
 
     val btn:Button = build()
 
     /**
      * builds the Smiley Face Button
      */
-    fun build() : Button {
+    private fun build() : Button {
         val imageHappy = Image("${KSweeper.IMAGES_PATH}/happySmiley.png")
 
         //val imageHappy = Image( KSweeper::class.java.getResourceAsStream( "${KSweeper.IMAGES_PATH}/happySmiley.png" ))

@@ -9,11 +9,11 @@ import javafx.scene.control.Tooltip
  * Date: 6/21/2017
  * Time: 1:50 PM
  */
-class RemainingMinesCtrl( val kSweeper: KSweeper ) {
+class RemainingMinesCtrl(private val kSweeper: KSweeper ) {
 
     val textField: TextField = build()
 
-    fun build() : TextField {
+    private fun build() : TextField {
         val textField = TextField( BoardModel.totalMines( kSweeper.model.rows, kSweeper.model.cols).toString())
 
         with ( textField ) {

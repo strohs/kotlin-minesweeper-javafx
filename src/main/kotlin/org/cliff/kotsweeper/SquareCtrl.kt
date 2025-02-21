@@ -15,12 +15,12 @@ import javafx.scene.text.Text
  * Date: 6/27/2017
  * Time: 10:25 AM
  */
-class SquareCtrl(val kSweeper: KSweeper, val row:Int, val col:Int ) {
+class SquareCtrl(private val kSweeper: KSweeper, val row:Int, val col:Int ) {
 
 
     val stackPane:StackPane = build()
     val rect:Rectangle = stackPane.children[0] as Rectangle
-    val text:Text = stackPane.children[1] as Text
+    private val text:Text = stackPane.children[1] as Text
 
     /**
      * Construct a StackPane. The squares of the game's grid are constructed
@@ -84,7 +84,7 @@ class SquareCtrl(val kSweeper: KSweeper, val row:Int, val col:Int ) {
     /**
      * sets the text color of a square based on the number of mines adjacent to it
      */
-    fun colorizeText( str:String ) : Color {
+    private fun colorizeText( str:String ) : Color {
         when ( str ) {
             "1"             -> return Color.BLUE
             "2"             -> return Color.GREEN
